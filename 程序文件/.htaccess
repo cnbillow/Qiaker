@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^product/([0-9]+).html$ ?m=wxsite&mod=show&id=$1 [QSA,L]
+RewriteRule ^list/([0-9]+).html$ ?m=wxsite&mod=list&id=$1 [QSA,L]
+RewriteRule ^([a-z]+).html$ ?m=wxsite&mod=$1 [QSA,L]
+RewriteRule ^day/(.*).html$ ?m=wxsite&mod=day&date=$1 [QSA,L]
+RewriteRule ^user/([0-9]+).html$ ?m=wxsite&mod=user&uid=$1 [QSA,L]
+</IFMODULE>
