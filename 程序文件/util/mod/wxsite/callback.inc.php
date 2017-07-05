@@ -1,6 +1,6 @@
 <?php 
-$app_id = "101406653"; 
-$app_secret = "62482470b0e1f21381c79b39970c539d"; 
+$app_id = "****"; 
+$app_secret = "****"; 
 $my_url = "http://qiaker.cn/callback.html"; 
 
 $code = $_REQUEST["code"];
@@ -20,7 +20,7 @@ if ($_REQUEST['state']==$_SESSION['state']) {
     }
 
     $params = array();
-    parse_str($response, $params); //°Ñ´«»ØÀ´µÄÊý¾Ý²ÎÊý±äÁ¿»¯ 
+    parse_str($response, $params); //æŠŠä¼ å›žæ¥çš„æ•°æ®å‚æ•°å˜é‡åŒ– 
     $graph_url = "https://graph.qq.com/oauth2.0/me?access_token=".$params['access_token'];
     $str = file_get_contents($graph_url);
     if (strpos($str, "callback") !== false) {
@@ -28,7 +28,7 @@ if ($_REQUEST['state']==$_SESSION['state']) {
         $rpos = strrpos($str, ")");
         $str = substr($str, $lpos + 1, $rpos - $lpos - 1);
     }
-    $user = json_decode($str); //´æ·Å·µ»ØµÄÊý¾Ý client_id £¬openid 
+    $user = json_decode($str); //å­˜æ”¾è¿”å›žçš„æ•°æ® client_id ï¼Œopenid 
     if (isset($user->error)) {
         echo "<h3>error:</h3>".$user->error;
         echo "<h3>msg :</h3>".$user->error_description;
